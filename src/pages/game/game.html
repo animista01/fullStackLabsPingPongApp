@@ -1,0 +1,32 @@
+<!--
+  Generated template for the GamePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Your games</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list-header *ngIf="games.length">
+    Your games
+  </ion-list-header>
+  <ion-list>
+    <ion-item *ngFor="let game of games">
+      <h2>Against: {{game.opponent}}</h2>
+      <p>Opponent score: {{game.opponent_score}}</p>
+      <p>Your score: {{game.user_score}}</p>
+      <p>Played: {{game.created_at | date:'yMMMdjms'}}</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab (click)="createGameModal()" right bottom>
+    <button ion-fab><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

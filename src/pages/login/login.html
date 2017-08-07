@@ -1,0 +1,26 @@
+<ion-content padding text-center>
+	<ion-grid>
+		<ion-row>
+	    <ion-col>
+	      <form margin-top [formGroup]="logInGroup" (ngSubmit)="logIn()">
+	        <ion-list>
+	          <ion-item icon-left class="input-box">
+	            <ion-icon item-content name="person"></ion-icon>
+	            <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+	          </ion-item>
+	          <ion-item icon-left class="input-box">
+	            <ion-icon item-content name="lock"></ion-icon>
+	            <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+	          </ion-item>
+	        </ion-list>
+	        <button ion-button margin-bottom color="primary" round type="submit" [disabled]="!logInGroup.valid">Login</button>
+	      </form>
+	    </ion-col>
+	  </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button margin-bottom color="secondary" round (click)="goToSignup()">Sign up</button>
+      </ion-col>
+    </ion-row>
+	</ion-grid>
+</ion-content>
