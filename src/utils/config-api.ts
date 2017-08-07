@@ -1,3 +1,3 @@
 export class ConfigAPI {
-  public static baseUrl: string = 'http://localhost:3000/api/v1';
+  public static baseUrl: string = 'https://fullstacklabspingpongbackend.herokuapp.com/api/v1';
 }
