@@ -59,6 +59,12 @@ export class UserProvider {
     return seq;
   }
 
+  logout() {
+    this._user = null;
+    this.util.setToken('token');
+    return this.util.deleteOneItem('token');
+  }
+
   private extractData(res: Response){
     return res.json();
   }

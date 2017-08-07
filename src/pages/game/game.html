@@ -6,10 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-toolbar>
     <ion-title>Your games</ion-title>
-  </ion-navbar>
-
+    <ion-buttons class="end" end>
+      <button (click)="signout()" ion-button icon-only>
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 

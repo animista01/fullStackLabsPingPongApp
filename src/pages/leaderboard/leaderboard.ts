@@ -10,7 +10,7 @@ import { LeaderboardProvider } from '../../providers/leaderboard/leaderboard';
 export class LeaderboardPage {
   leaderboard: any = []
   constructor(public navCtrl: NavController, public navParams: NavParams, public leaderboardProv: LeaderboardProvider, public loadingCtrl: LoadingController) {
-    
+
   }
 
   ionViewDidLoad() {}
@@ -21,8 +21,10 @@ export class LeaderboardPage {
 
     this.leaderboardProv.getLeaderboard()
     .subscribe((resp) => {
-      this.leaderboard = resp.leaderboard;
       loader.dismiss();
+      if (resp && resp.leaderboard) {
+        this.leaderboard = resp.leaderboard;
+      }
     }, (err) => { loader.dismiss(); });
   }
 }

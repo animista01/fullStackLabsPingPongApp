@@ -25,6 +25,9 @@ export class UtilProvider {
     this.token.next(user_token);
   }
 
+  deleteOneItem(itemName: string){
+    return this.storage.remove(itemName);
+  }
 
   getToken() {
     return this.token.asObservable();

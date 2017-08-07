@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
+import { ViewChild, Component } from '@angular/core';
+import { Nav, IonicPage, NavController, NavParams, LoadingController, ModalController } from 'ionic-angular';
 import { GameProvider } from '../../providers/game/game';
 import { UserProvider } from '../../providers/user/user';
 import { UtilProvider } from '../../providers/util/util';
@@ -20,15 +20,19 @@ export class GamePage {
 
     game.getMineGames()
     .subscribe((resp) => {
-      console.log(JSON.stringify(resp, null, 2))
-      this.games = resp.games;
+      // console.log(JSON.stringify(resp, null, 2))
+      if (resp && resp.games) {
+        this.games = resp.games;
+      }
     }, (err) => {});
 
     user.getOpponents()
     .subscribe((resp) => {
       loader.dismiss();
-      console.log(JSON.stringify(resp, null, 2))
-      this.opponents = resp.opponents;
+      // console.log(JSON.stringify(resp, null, 2))
+      if (resp && resp.opponents) {
+        this.opponents = resp.opponents;
+      }
     }, (err) => {
       loader.dismiss();
     });
@@ -45,6 +49,13 @@ export class GamePage {
       }
     });
     searchModal.present();
+  }
+
+  signout(){
+    this.user.logout()
+    .then(() => {
+      this.navCtrl.setRoot("LoginPage");
+    });
   }
 
 }
